@@ -80,5 +80,5 @@ doubt, write down your assumption and keep going.
 ### 3. Assumptions & Edge Cases Handled
 
 - **Same-day Ordering**: Credits land before debits on every date.
-- **Token Pays & Tier Interaction**: Position floors dynamically calculate the maximum of base minimums, active tier step-ups, and the token pay cap ($p_i \ge \text{min\_payment\_cents} + 1$ for $i > \text{max\_token\_pays}$).
+- **Token Pays & Tier Interaction**: Position floors enforce creditor payment minimums: the first few payments can be nominal "token" amounts (`min_payment_cents`), but subsequent payments after `max_token_pays` must step up (be at least `min_payment_cents + 1 cent`).
 - **Horizon Boundary**: Payment schedules strictly validate that no cadence dates exceed `last_draft_date`.
